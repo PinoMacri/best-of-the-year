@@ -5,6 +5,7 @@
 <title>MyTitle</title>
 </head>
 <body>
+ <div  th:replace="index.html :: header"></div>
 	<!-- <h1 th:if="${titolo}" th:text="${titolo}"></h1>
     <h1 th:unless="${titolo}" th:text="${titoli}"></h1> -->
 	<ul>
@@ -12,5 +13,8 @@
 		<a th:href="@{/films/{id}(id=${film.id})}" th:text="${film.titolo}"></a>
 			</li>
 	</ul>
+
+	<a href="/">Torna alla Home</a>
+
 </body>
 </html>

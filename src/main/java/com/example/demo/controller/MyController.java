@@ -49,6 +49,7 @@ public class MyController {
 		model.addAttribute("canzoni", canzoni);
 		return "canzoni";
 	}
+	
 
 	 @GetMapping("/films/{id}")
 	    public String getFilm(Model model, @PathVariable("id") int id) {
