@@ -52,7 +52,7 @@ public class MyController {
 	
 
 	 @GetMapping("/films/{id}")
-	    public String getFilm(Model model, @PathVariable("id") int id) {
+	   public String getFilm(Model model, @PathVariable("id") int id) {
 	        Film film = getFilmById(id);
 	        model.addAttribute("film", film);
 	        return "film";
