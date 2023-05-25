@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>MyTitle</title>
+<meta charset="UTF-8">
+<title>MyTitle</title>
 </head>
 <body>
-    <h1 th:if="${titolo}" th:text="${titolo}"></h1>
-    <h1 th:unless="${titolo}" th:text="${titoli}"></h1>
+	<!-- <h1 th:if="${titolo}" th:text="${titolo}"></h1>
+    <h1 th:unless="${titolo}" th:text="${titoli}"></h1> -->
+	
+		<li th:each="canzone : ${canzoni}" th:object="${canzone}">
+		<a th:href="@{/canzoni/{id}(id=${canzone.id})}" th:text="${canzone.titolo}"></a>
+			</li>
 </body>
 </html>

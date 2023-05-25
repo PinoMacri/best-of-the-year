@@ -22,75 +22,60 @@ public class MyController {
 
 	private List<Film> fetchBestFilms() {
 		List<Film> movies = new ArrayList<>();
-		movies.add(new Film("1", "Titanic"));
-		movies.add(new Film("2", "The Lion King"));
-		movies.add(new Film("3", "Tarzan"));
+		movies.add(new Film(1, "Titanic"));
+		movies.add(new Film(2, "The Lion King"));
+		movies.add(new Film(3, "Tarzan"));
 		return movies;
 	}
 
 	private List<Canzone> fetchBestCanzoni() {
 		List<Canzone> songs = new ArrayList<>();
-		songs.add(new Canzone("1", "Rose Rosse"));
-		songs.add(new Canzone("2", "Uno su mille ce la fa"));
-		songs.add(new Canzone("3", "Sarò con te"));
+		songs.add(new Canzone(1, "Rose Rosse"));
+		songs.add(new Canzone(2, "Uno su mille ce la fa"));
+		songs.add(new Canzone(3, "Sarò con te"));
 		return songs;
 	}
 
 	@GetMapping("/films")
 	public String getBestFilms(Model model) {
 		List<Film> films = fetchBestFilms();
-		List<String> filmTitles = new ArrayList<>();
-		for (Film film : films) {
-			filmTitles.add(film.getTitolo());
-		}
-		String filmTitleString = String.join(", ", filmTitles);
-		model.addAttribute("titoli", filmTitleString);
+		model.addAttribute("films", films);
 		return "films";
 	}
 
 	@GetMapping("/canzoni")
 	public String getBestCanzoni(Model model) {
 		List<Canzone> canzoni = fetchBestCanzoni();
-		List<String> canzoneTitles = new ArrayList<>();
-		for (Canzone canzone : canzoni) {
-			canzoneTitles.add(canzone.getTitolo());
-		}
-		String canzoneTitlesString = String.join(", ", canzoneTitles);
-
-		model.addAttribute("titoli", canzoneTitlesString);
+		model.addAttribute("canzoni", canzoni);
 		return "canzoni";
 	}
 
 	 @GetMapping("/films/{id}")
-	    public String titoloSingoloFilm(Model model, @PathVariable("id") int id) {
-	        String titolo = fetchFilmTitleById(id);
-	        model.addAttribute("titolo", titolo);
-	        return "films";
+	    public String getFilm(Model model, @PathVariable("id") int id) {
+	        Film film = getFilmById(id);
+	        model.addAttribute("film", film);
+	        return "film";
 	    }
 
-	    private String fetchFilmTitleById(int id) {
-	        List<Film> films = fetchBestFilms();
-	        for (Film film : films) {
-	            if (film.getId().equals(String.valueOf(id))) {
-	                return film.getTitolo();
-	            }
+	    private Film getFilmById(int id) {
+	        Film singoloFilm = null;
+	        for (Film film : fetchBestFilms()) 
+	        	if (film.getId() == id) singoloFilm = film;
+	        	return singoloFilm;
 	        }
-	        return "Film non trovato";
-	    }
+	    
 	    
 	    @GetMapping("/canzoni/{id}")
-	    public String titoloSingolaCanzone(Model model, @PathVariable("id") int id) {
-	        String titolo = fetchCanzoneTitleById(id);
-	        model.addAttribute("titolo", titolo);
-	        return "canzoni";
+	    public String getCanzone(Model model, @PathVariable("id") int id) {
+	        Canzone canzone = getCanzoneById(id);
+	        model.addAttribute("canzone", canzone);
+	        return "canzone";
 	    }
-	    private String fetchCanzoneTitleById(int id) {
-	        List<Canzone> canzoni = fetchBestCanzoni();
-	        for (Canzone canzone : canzoni ) {
-	            if (canzone.getId().equals(String.valueOf(id))) {
-	                return canzone.getTitolo();
-	            }
+
+	    private Canzone getCanzoneById(int id) {
+	        Canzone singolaCanzone = null;
+	        for (Canzone canzone : fetchBestCanzoni()) 
+	        	if (canzone.getId() == id) singolaCanzone = canzone;
+	        	return singolaCanzone;
 	        }
-	        return "Canzone non trovata";
-	    }
 	}

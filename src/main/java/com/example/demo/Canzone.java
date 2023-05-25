@@ -1,19 +1,19 @@
 package com.example.demo;
 
 public class Canzone {
-	private String id;
+	private int id;
 	private String titolo;
 
-	public Canzone(String id, String titolo) {
+	public Canzone(int id, String titolo) {
 		setId(id);
 		setTitolo(titolo);
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

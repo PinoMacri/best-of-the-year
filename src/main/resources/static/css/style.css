@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+.best-mo-so{
+	height: 60px;
+	width: 550px;
+	border:1px solid black;
+}
+.best-of {
+	width: 150px;
+	height: 100%;
+	border:1px solid black;
+}
+.mo-so {
+	width: 400px;
+	height: 100%;
+	border: 1px solid black;
+}
+.contenuto {
+	border: 2px solid black;
+	height: 450px;
+	width: 550px;
+}

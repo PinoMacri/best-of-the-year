@@ -2,9 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/style.css}">
 <title>MyTitle</title>
 </head>
+
 <body>
-    <h1 th:text="'Best of the year by ' + ${name}"></h1>
+	<h1 class="text-danger" th:text="'Best of the year by ' + ${name}"></h1>
+	<div class="container d-flex flex-column align-items-center">
+		<div class="d-flex best-mo-so">
+			<div class="best-of d-flex justify-content-center align-items-center">Home
+				Page</div>
+			<div class="mo-so d-flex align-items-center justify-content-center">
+				<a th:href="@{/films}" class="btn btn-small btn-primary mx-2">Movies</a> 
+				<a th:href="@{/canzoni}" class="btn btn-small btn-primary mx-2">Songs</a>
+			</div>
+		</div>
+		<div class="contenuto">
+			<img class="h-50 w-100" alt="logo" th:src="@{/img/movie.png}" /> 
+			<img class="h-50 w-100" alt="logo"
+				th:src="@{/img/songs.webp}" />
+		</div>
+	</div>
+
 </body>
 </html>
